@@ -1,0 +1,77 @@
+local scroll_speed = 0.5
+
+function init(self)
+	-- use the x and y component to track which screen is currently displayed.
+	self.screen_pos = vmath.vector3(0, 0, 0)
+	self.next_screen = nil
+	self.current_screen = nil
+	self.loading = false
+	self.dir = nil
+	msg.post("#", "load_screen", { dir = hash("center") })
+end
+
+-- start positions of loaded screens.
+local positions = { [hash("center")] = vmath.vector3(),
+					[hash("up")] = vmath.vector3(0, 768, 0),
+					[hash("down")] = vmath.vector3(0, -768, 0),
+					[hash("right")] = vmath.vector3(1280, 0, 0),
+					[hash("left")] = vmath.vector3(-1280, 0, 0) }
+
+local function done(self)
+	-- done animating
+	self.loading = false
+
+	if self.current_screen then
+		-- if there was a current screen, delete it
+		go.delete(self.current_screen)
+	end
+	-- the spawed next screen is in place and is now the new current screen
+	self.current_screen = self.next_screen
+	
+	-- tell hero to enter screen
+	msg.post("/hero#script", "enter_screen", { dir = self.dir })
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("load_screen") and not self.loading then
+		self.loading = true
+		self.dir = message.dir
+		
+		if message.dir == hash("up") then
+			self.screen_pos.y = self.screen_pos.y + 1
+		elseif message.dir == hash("down") then
+			self.screen_pos.y = self.screen_pos.y - 1
+		elseif message.dir == hash("right") then
+			self.screen_pos.x = self.screen_pos.x + 1
+		elseif message.dir == hash("left") then
+			self.screen_pos.x = self.screen_pos.x - 1
+		end
+		
+		-- what screen to spawn
+		local f = "#factory-" .. self.screen_pos.x .. "-" .. self.screen_pos.y
+		
+		-- where should the next screen be spawned?
+		local p = positions[message.dir]
+
+		-- spawn the next screen
+		self.next_screen = collectionfactory.create(f, p)
+
+		-- disable collision while animating everything into place.
+		msg.post("/hero#collider", "disable")
+		
+		if self.current_screen then
+			-- if there is a current screen
+			local current_root = self.current_screen[hash("/root")]
+			local next_root = self.next_screen[hash("/root")]
+			-- scroll the current and next screens into their new positions.
+			go.animate(current_root, "position", go.PLAYBACK_ONCE_FORWARD, -p, go.EASING_LINEAR, scroll_speed, 0)
+			go.animate(next_root, "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(), go.EASING_LINEAR, scroll_speed, 0)
+			-- scroll the hero along.
+			local hp = go.get_position("/hero")
+			go.animate("/hero", "position", go.PLAYBACK_ONCE_FORWARD, hp-p, go.EASING_LINEAR, scroll_speed, 0, done)
+		else
+			-- this is the first screen load so no animations are needed.
+			done(self)
+		end
+	end
+end

@@ -1,0 +1,132 @@
+animations {
+  id: "hero-front-walk"
+  images {
+    image: "/assets/hero/front-1.png"
+  }
+  images {
+    image: "/assets/hero/front-2.png"
+  }
+  images {
+    image: "/assets/hero/front-1.png"
+  }
+  images {
+    image: "/assets/hero/front-3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 15
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "hero-front-idle"
+  images {
+    image: "/assets/hero/front-1.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "hero-back-walk"
+  images {
+    image: "/assets/hero/back-1.png"
+  }
+  images {
+    image: "/assets/hero/back-2.png"
+  }
+  images {
+    image: "/assets/hero/back-1.png"
+  }
+  images {
+    image: "/assets/hero/back-3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 15
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "hero-back-idle"
+  images {
+    image: "/assets/hero/back-1.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "hero-right-walk"
+  images {
+    image: "/assets/hero/right-1.png"
+  }
+  images {
+    image: "/assets/hero/right-2.png"
+  }
+  images {
+    image: "/assets/hero/right-1.png"
+  }
+  images {
+    image: "/assets/hero/right-3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 15
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "hero-right-idle"
+  images {
+    image: "/assets/hero/right-1.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "hero-left-walk"
+  images {
+    image: "/assets/hero/left-1.png"
+  }
+  images {
+    image: "/assets/hero/left-2.png"
+  }
+  images {
+    image: "/assets/hero/left-1.png"
+  }
+  images {
+    image: "/assets/hero/left-3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 15
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "hero-left-idle"
+  images {
+    image: "/assets/hero/left-1.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 15
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "bee"
+  images {
+    image: "/assets/bee/bee-1.png"
+  }
+  images {
+    image: "/assets/bee/bee-2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 1
+inner_padding: 0

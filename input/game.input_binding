@@ -1,0 +1,20 @@
+key_trigger {
+  input: KEY_UP
+  action: "north"
+}
+key_trigger {
+  input: KEY_DOWN
+  action: "south"
+}
+key_trigger {
+  input: KEY_LEFT
+  action: "west"
+}
+key_trigger {
+  input: KEY_RIGHT
+  action: "east"
+}
+mouse_trigger {
+  input: MOUSE_BUTTON_LEFT
+  action: "click"
+}

@@ -1,0 +1,27 @@
+[project]
+title = RPG sample
+
+[bootstrap]
+main_collection = /main/main.collectionc
+
+[input]
+game_binding = /input/game.input_bindingc
+use_accelerometer = 0
+
+[display]
+width = 1280
+height = 768
+high_dpi = 0
+
+[script]
+shared_state = 1
+
+[windows]
+app_icon = /assets/appicons/appicon.ico
+
+[osx]
+app_icon = /assets/appicons/appicon.icns
+
+[physics]
+debug = 0
+
