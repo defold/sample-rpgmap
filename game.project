@@ -1,5 +1,5 @@
 [project]
-title = RPG sample
+title = RPG map sample
 
 [bootstrap]
 main_collection = /main/main.collectionc
