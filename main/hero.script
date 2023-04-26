@@ -29,7 +29,7 @@ local function anim(self)
 
 	if a ~= self.anim then
 		self.anim = a
-		msg.post("#sprite", "play_animation", { id = self.anim })
+		sprite.play_flipbook("#sprite", self.anim)
 	end
 end
 
