@@ -7,7 +7,7 @@ This sample shows one method of creating very large RPG maps in Defold. The desi
 3. The player's movement is restricted by obstacles on the map, so the level designer can lead the player between screens using trees, rocks, water and other obstacles.
 4. It should be possible to mix and match tilemaps, sprites and other visual content.
 
-First, [run the sample](defold://build) and walk through the 3x3 screen big world to get a feel for the sample's setup. You control the character with the arrow keys.
+First, [run the sample](defold://project.build) and walk through the 3x3 screen big world to get a feel for the sample's setup. You control the character with the arrow keys.
 
 ## The main collection
 
